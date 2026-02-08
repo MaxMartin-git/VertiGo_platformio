@@ -3,7 +3,7 @@
 #include "../include/commands.h"
 
 // Pin-Zuweisungen
-#define leftBackward  1
+#define leftBackward  11 //von 1 zu 11 im Vergleich zum Mini-Prototyp
 #define leftForward   2
 #define leftVelocity  3
 #define rightBackward 4

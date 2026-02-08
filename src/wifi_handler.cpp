@@ -6,7 +6,10 @@
 
 void handleWiFi(WiFiServer &server) {
     WiFiClient client = server.available();
-    if (!client) return;
+    if (!client) 
+    {
+        return;
+    }
 
     unsigned long startTime = millis();
     while (!client.available()) {

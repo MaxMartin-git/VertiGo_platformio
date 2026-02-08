@@ -12,7 +12,6 @@ void IMU_setup() {
 
     if (!mpu.testConnection()) {
         Serial.println("MPU6050 nicht erreichbar!");
-        while (1);
     }
 
     Serial.println("MPU6050 bereit");

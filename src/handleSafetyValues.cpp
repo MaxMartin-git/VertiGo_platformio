@@ -1,5 +1,5 @@
 #include "handleSafetyValues.h"
-#include "commands.h"
+#include "../include/commands.h"
 #include "../include/config.h"
 
 void handleSafetyValues(float tilt) {

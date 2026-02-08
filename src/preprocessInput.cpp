@@ -1,6 +1,6 @@
 #include "preprocessInput.h"
 #include "../include/config.h"
-#include "commands.h"
+#include "../include/commands.h"
 
 
 bool handleStateRequest(const String &req, WiFiClient &client) {

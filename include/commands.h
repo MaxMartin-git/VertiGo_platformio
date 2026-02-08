@@ -17,3 +17,6 @@ struct MotorCmd {
 extern ControlMode mode;
 extern MotorCmd manualCmd;
 extern MotorCmd autoCmd;
+
+extern bool enableMotors;
+extern unsigned long lastCommandTime;

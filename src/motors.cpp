@@ -9,6 +9,7 @@
 #define rightBackward 4
 #define rightForward  5
 #define rightVelocity 6
+
 extern bool enableMotors;
 
 void setMotorpins() {
@@ -23,7 +24,6 @@ void setMotorpins() {
 void driveMotors(const MotorCmd &cmd) {
     if (!enableMotors) {
         digitalWrite(leftForward, LOW);
-    #include "../include/commands.h"
         digitalWrite(leftBackward, LOW);
         digitalWrite(rightForward, LOW);
         digitalWrite(rightBackward, LOW);
@@ -32,7 +32,6 @@ void driveMotors(const MotorCmd &cmd) {
     if (cmd.leftDir >= 0) {
         digitalWrite(leftForward, HIGH);
         digitalWrite(leftBackward, LOW);
-    extern bool enableMotors;
     } else {
         digitalWrite(leftForward, LOW);
         digitalWrite(leftBackward, HIGH);

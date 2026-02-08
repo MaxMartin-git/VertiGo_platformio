@@ -1,22 +1,3 @@
-#pragma once
-
-// Steuermodi
-enum ControlMode {
-    MANUAL,
-    WALL_ALIGN
-};
-
-// Motorbefehl
-struct MotorCmd {
-    int leftPWM;
-    int rightPWM;
-    int leftDir;
-    int rightDir;
-};
-
-extern ControlMode mode;
-extern MotorCmd manualCmd;
-extern MotorCmd autoCmd;
 
 // PWM-Werte für die Motoren (immer positiv, 0..255)
 extern int leftPWM;

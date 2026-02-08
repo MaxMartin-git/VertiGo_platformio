@@ -1,4 +1,5 @@
 
+#include "main.h"
 #include "../include/config.h"
 #include <WiFiS3.h>
 #include "../include/commands.h"

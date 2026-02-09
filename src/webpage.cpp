@@ -97,14 +97,12 @@ void sendWebpage(WiFiClient &client) {
   client.println("const box = document.getElementById('joyContainer');");
 
   client.println("let active = false;");
-  client.println("let boxRect = box.getBoundingClientRect();");
 
   client.println("let lastX = 0;");
   client.println("let lastY = 0;");
   client.println("let centerX = 0;");
   client.println("let centerY = 0;");
   client.println("let maxRadius = 0;");
-  client.println("let calculated = false;");
     
   client.println("let lastSendTime = 0;");
   client.println("let stickRadius = 30;");
@@ -121,15 +119,14 @@ void sendWebpage(WiFiClient &client) {
   client.println("}");
 
   client.println("function CalcJoyGeom() {");
+  client.println("  const boxRect = box.getBoundingClientRect();");
   client.println("  centerX = boxRect.width / 2 + boxRect.left;");
   client.println("  centerY = boxRect.height / 2 + boxRect.top;");
-  client.println("  maxRadius = centerX - stickRadius;");
-  client.println("  calculated = true;");
+  client.println("  maxRadius = boxRect.width / 2 - stickRadius;");
   client.println("}");
 
   client.println("function handle(e) {");
   client.println("  if (!active) return;");
-  client.println("  if (!calculated) CalcJoyGeom();");
   client.println("  let x = e.clientX - centerX;");
   client.println("  let y = e.clientY - centerY;");
 
@@ -140,19 +137,18 @@ void sendWebpage(WiFiClient &client) {
   client.println("    y = y / dist * maxRadius;");
   client.println("  }");
 
-  client.println("  joy.style.left = (centerX + x) + 'px';");
-  client.println("  joy.style.top  = (centerY + y) + 'px';");
+  client.println("  joy.style.left = (150 + x) + 'px';");
+  client.println("  joy.style.top  = (150 + y) + 'px';");
 
   client.println("  const nx = (x / maxRadius).toFixed(2);");
   client.println("  const ny = (-y / maxRadius).toFixed(2);");
-
-  client.println("  send(nx, ny);");
+  client.println("  send(nx, ny)");
   client.println("}");
 
-  client.println("box.addEventListener('mousedown', e => { active = true; handle(e); });");
+  client.println("box.addEventListener('mousedown', e => { active = true; CalcJoyGeom(); handle(e); });");
   client.println("window.addEventListener('mousemove', handle);");
 
-  client.println("box.addEventListener('touchstart', e => { active = true; handle(e.touches[0]); });");
+  client.println("box.addEventListener('touchstart', e => { active = true; CalcJoyGeom(); handle(e.touches[0]); });");
   client.println("window.addEventListener('touchmove', e => handle(e.touches[0]));");
 
   client.println("function resetJoy() {");

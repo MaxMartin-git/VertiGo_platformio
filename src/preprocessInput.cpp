@@ -65,9 +65,4 @@ void handleJoystickRequest(const String &req, WiFiClient &client) {
 
     manualCmd.leftPWM  = constrain(abs(maxLeft), 0, 255);
     manualCmd.rightPWM = constrain(abs(maxRight), 0, 255);
-	
-	// send short HTTP-response
-	/*client.println("HTTP/1.1 200 OK");
-	client.println("Connection: close");
-	client.println();*/
 }

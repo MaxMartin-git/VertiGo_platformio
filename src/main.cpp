@@ -34,7 +34,6 @@ void loop() {
 
   if (millis() - lastIMU >= 10) {
       lastIMU = millis();
-
       tilt = readIMU();
   }
 

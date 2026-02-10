@@ -1,5 +1,6 @@
 #include "uart_line_rx.h"
 #include <Arduino.h>
+#include "../include/config.h"
 
 namespace {
 constexpr uint32_t kTimeoutMs = UART_TEST_TIMEOUT_MS;
@@ -11,11 +12,6 @@ int g_error = 0;
 uint32_t g_lastRxMs = 0;
 uint32_t g_lastPrintMs = 0;
 
-void handleError(int error) __attribute__((weak));
-void handleError(int error) {
-  (void)error;
-}
-
 void handleLine() {
   g_buf[g_idx] = '\0';
   if (g_buf[0] == 'E' && g_buf[1] == ':') {
@@ -24,6 +20,11 @@ void handleLine() {
   }
   g_idx = 0;
 }
+}
+
+void handleError(int error) __attribute__((weak));
+void handleError(int error) {
+  (void)error;
 }
 
 void uartLineRxInit() {

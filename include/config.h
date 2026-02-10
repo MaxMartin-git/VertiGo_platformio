@@ -7,6 +7,13 @@
 #define WIFI_PASS  "12345678"
 #define WIFI_PORT     80
 
+// --------------------------------------------------------
+// UART-TEST (Pi -> Arduino, one-way)
+// Set to 0 to disable test receiver in main.
+#define ENABLE_UART_TEST 1
+#define UART_TEST_BAUD 115200
+#define UART_TEST_TIMEOUT_MS 300
+
 #define BUZZER 9
 
 //  Konstanten

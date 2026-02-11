@@ -10,6 +10,7 @@
 #include "handleSafetyValues.h"
 #include "motors.h"
 #include "uart_line_rx.h"
+#include "line_follower_control.h"
 
 unsigned long lastIMU = 0;
 
@@ -32,6 +33,10 @@ void setup() {
 
   IMU_setup();
   setMotorpins();
+  
+  // Line Follower Controller initialisieren
+  lineFollowerInit();
+  setLineFollowerSpeed(80);  // Basis-Geschwindigkeit für Line Following
 }
 
 void loop() {
@@ -51,11 +56,28 @@ void loop() {
   handleWiFi(server);
   handleSafetyValues(tilt);
 
+  // Modus-basierte Steuerung
   if (mode == MANUAL) {
       activeCmd = manualCmd;
-  } else {
+  } else if (mode == WALL_ALIGN) {
       US_data us = US_measure();
       activeCmd = wallFollowControl(us);
+  } else if (mode == LINE_FOLLOWING) {
+      // Line Following mit PID Controller
+      // Nur wenn UART-Verbindung aktiv ist!
+      if (isUartConnected()) {
+          int lineError = getLineError();
+          lineFollowerUpdate(lineError);
+          activeCmd = getLineFollowerCmd();
+      } else {
+          // Keine Verbindung: Motoren stoppen
+          activeCmd = {0, 0, 1, 1};
+          static uint32_t lastWarn = 0;
+          if (millis() - lastWarn > 2000) {
+              lastWarn = millis();
+              Serial.println("⚠ LINE_FOLLOWING: Waiting for Pi connection...");
+          }
+      }
   }
   
   driveMotors(activeCmd);

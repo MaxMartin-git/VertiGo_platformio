@@ -27,6 +27,8 @@ void driveMotors(const MotorCmd &cmd) {
         digitalWrite(leftBackward, LOW);
         digitalWrite(rightForward, LOW);
         digitalWrite(rightBackward, LOW);
+        analogWrite(leftVelocity, 0);   // FIX: PWM auch auf 0
+        analogWrite(rightVelocity, 0);  // FIX: PWM auch auf 0
         return;
     }
     if (cmd.leftDir >= 0) {

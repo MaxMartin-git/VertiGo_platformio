@@ -11,12 +11,14 @@ uint8_t g_idx = 0;
 int g_error = 0;
 uint32_t g_lastRxMs = 0;
 uint32_t g_lastPrintMs = 0;
+bool g_uartConnected = false;  // NEU: Connection-Status
 
 void handleLine() {
   g_buf[g_idx] = '\0';
   if (g_buf[0] == 'E' && g_buf[1] == ':') {
     g_error = constrain(atoi(g_buf + 2), -100, 100);
     g_lastRxMs = millis();
+    g_uartConnected = true;  // Verbindung hergestellt
   }
   g_idx = 0;
 }
@@ -41,8 +43,11 @@ void uartLineRxPoll() {
     }
   }
 
-  if (millis() - g_lastRxMs > kTimeoutMs) {
+  // Bei Timeout: Verbindung verloren
+  if (millis() - g_lastRxMs > kTimeoutMs && g_uartConnected) {
     g_error = 0;
+    g_uartConnected = false;
+    Serial.println("⚠ UART timeout - connection lost");
   }
 
   handleError(g_error);
@@ -52,4 +57,12 @@ void uartLineRxPoll() {
     Serial.print("UART error=");
     Serial.println(g_error);
   }
+}
+
+int getLineError() {
+  return g_error;
+}
+
+bool isUartConnected() {
+  return g_uartConnected;
 }

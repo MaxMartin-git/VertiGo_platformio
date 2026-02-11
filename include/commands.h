@@ -3,7 +3,8 @@
 // Steuermodi
 enum ControlMode {
     MANUAL,
-    WALL_ALIGN
+    WALL_ALIGN,
+    LINE_FOLLOWING
 };
 
 // Motorbefehl

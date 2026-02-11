@@ -1,7 +1,7 @@
 #include "../include/commands.h"
 
-// Aktueller Modus
-ControlMode mode = MANUAL;
+// Aktueller Modus - Standard: LINE_FOLLOWING
+ControlMode mode = LINE_FOLLOWING;
 
 // Structinstanzen für Motorbefehle
 MotorCmd manualCmd;
@@ -16,7 +16,7 @@ int leftDir = 1;
 int rightDir = 1;
 
 // Motoren aktiviert oder deaktiviert
-bool enableMotors = false;
+bool enableMotors = true;  // Aktiviert für Line Following
 
 //timestamp des letzten Kommandos
 unsigned long lastCommandTime = 0;

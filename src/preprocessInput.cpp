@@ -48,8 +48,8 @@ void handleJoystickRequest(const String &req, WiFiClient &client) {
     float fy = req.substring(posY + 2).toFloat();
 
     // Joystick → Motorwerte
-    int velocity = round(fy * 125);
-    int steering = round(fx * 125);
+    int velocity = round(fy * 255);
+    int steering = round(fx * 255);
 
     int maxLeft  = velocity + steering;
     int maxRight = velocity - steering;

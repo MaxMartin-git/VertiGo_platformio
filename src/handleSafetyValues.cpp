@@ -4,7 +4,7 @@
 
 void handleSafetyValues(float tilt) {
     if (tilt > 30.0) {
-        enableMotors = false;
+        //enableMotors = false;
         tone(BUZZER, 1000);
         return;                   
     }

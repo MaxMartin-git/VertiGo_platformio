@@ -10,7 +10,6 @@
 // --------------------------------------------------------
 // UART-TEST (Pi -> Arduino, one-way)
 // Set to 0 to disable test receiver in main.
-#define ENABLE_UART_TEST 1
 #define UART_TEST_BAUD 115200
 #define UART_TEST_TIMEOUT_MS 300
 
@@ -23,7 +22,7 @@
 //#define DESIRED_US_DURATION  300
 
 //für Wandfolger
-#define BASE_SPEED 100
+#define BASE_SPEED 200
 #define TARGET_MM  150
 #define K_AtoB     0.5
 #define K_DIST     0.5

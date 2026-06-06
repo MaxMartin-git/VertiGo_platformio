@@ -1,4 +1,4 @@
-English |[中文](readme_cn.md) |[Deutsch](readme_de.md)
+English | [中文](readme_cn.md) | [Deutsch](readme_de.md)
 
 # VertiGo_platformio
 
@@ -15,7 +15,7 @@ This project runs on Arduino Uno R4 WiFi and includes the following features:
 - Monitor battery voltage and display battery status.
 - Trigger a buzzer alert when tilt exceeds a safe threshold.
 
-Demo Vedio: https://youtu.be/RbbMbN5aSW8
+Demo Vedio: https://youtube.com/shorts/a0h48lALChM; https://youtu.be/RbbMbN5aSW8
 
 ## Key Features
 

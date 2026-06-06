@@ -13,6 +13,8 @@ VertiGo_platformio 是一个基于 Arduino/PlatformIO 的智能驱动演示项�
 - 电池电压监测与状态显示。
 - 过倾角时发出蜂鸣器警报。
 
+演示视频：https://youtube.com/shorts/a0h48lALChM; https://youtu.be/RbbMbN5aSW8
+
 ## 关键特性
 
 | 功能             | 描述                                                                 |

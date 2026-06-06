@@ -64,6 +64,8 @@ platformio run --environment uno_r4_wifi --target upload
 4. Im Automodus folgt das System mit Ultraschallmessungen der Wand.
 5. Überschreitet die Neigung 30°, warnt der Summer vor unsicherem Zustand.
 
+Demo Vedio: https://youtube.com/shorts/a0h48lALChM; https://youtu.be/RbbMbN5aSW8
+
 ## Projektstruktur
 
 | Datei / Pfad | Beschreibung |

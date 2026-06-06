@@ -1,3 +1,5 @@
+English |[中文](readme_cn.md) |[Deutsch](readme_de.md)
+
 # VertiGo_platformio
 
 VertiGo_platformio is an Arduino/PlatformIO demo project for smart drive control.
@@ -12,6 +14,8 @@ This project runs on Arduino Uno R4 WiFi and includes the following features:
 - Support manual driving and wall-following automatic driving.
 - Monitor battery voltage and display battery status.
 - Trigger a buzzer alert when tilt exceeds a safe threshold.
+
+Demo Vedio: https://youtu.be/RbbMbN5aSW8
 
 ## Key Features
 
